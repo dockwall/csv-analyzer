@@ -16,14 +16,18 @@ export class CSVReader {
     this.data = readFileSync(this.filename, { encoding: "utf-8" })
       .split("\n")
       .map((match) => match.split(","))
-      .map((matchArr) => [
-        convertStringToDate(matchArr[0]),
-        matchArr[1],
-        matchArr[2],
-        parseInt(matchArr[3]),
-        parseInt(matchArr[4]),
-        matchArr[5] as MATCH_RESULTS,
-        matchArr[6],
-      ]);
+      .map(this.mapRow);
+  }
+
+  mapRow(row: string[]): MatchData {
+    return [
+      convertStringToDate(row[0]),
+      row[1],
+      row[2],
+      parseInt(row[3]),
+      parseInt(row[4]),
+      row[5] as MATCH_RESULTS,
+      row[6],
+    ];
   }
 }
