@@ -1,13 +1,6 @@
 import { CSVReader } from "../CSVReader";
 import { convertStringToDate } from "../utils";
-
-export enum MATCH_RESULTS {
-  HOME_WIN = "H",
-  AWAY_WIN = "A",
-  DRAW = "D",
-}
-
-type MatchData = [Date, string, string, number, number, MATCH_RESULTS, string];
+import type { MatchData, MATCH_RESULTS } from "./types";
 
 export class MatchReader extends CSVReader<MatchData> {
   mapRow(row: string[]): MatchData {
