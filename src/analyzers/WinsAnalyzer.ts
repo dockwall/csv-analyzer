@@ -1,7 +1,7 @@
 import type { Analyzer } from "../Reporter";
 import { type MatchData, MATCH_RESULTS } from "../customCSVReaders/types";
 
-export class WinsAnalyzer implements Analyzer {
+export class WinsAnalyzer implements Analyzer<MatchData> {
   team: string;
 
   constructor(team: string) {
